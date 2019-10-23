@@ -1,0 +1,22 @@
+construção do banco de dados
+
+
+
+create database laudodb; 
+use laudodb;
+ 
+create table endereco(
+id int(4) auto_increment primary key, 
+logradouro varchar(50) not null,
+complemento varchar(50), 
+cep varchar(50) not null, 
+referencia varchar(50),
+codigo varchar(50), 
+edificio varchar(50), 
+condominio varchar(50),
+bairro varchar(50)
+
+
+
+
+)
