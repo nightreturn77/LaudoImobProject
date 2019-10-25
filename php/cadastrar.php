@@ -126,12 +126,12 @@ values('$especificacao','$esp1','$esp2','$esp3','$esp4','$esp5','$esp6')";
 
 
     //executando no banco de dados a variavel de inserção
-   /* if (mysqli_query($conn, $endereco)) {
+    if (mysqli_query($conn, $endereco)) {
         echo "Cadastrado com sucesso!";
     } else {
         echo "erro ao cadastrar: Erro no Endereco";
     }
-*/
+
 } else {
     echo 'Connection error!';
 }
