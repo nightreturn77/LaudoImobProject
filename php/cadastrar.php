@@ -19,6 +19,13 @@ if (isset($_POST['cadastrar'])) {
     $endereco = "insert into endereco(cep,logradouro,complemento,bairro,referencia,codigo,condominio,edificio)
 values('$cep','$logradouro','$complemento','$bairro','$referencia','$codigo','$condominio','$edificio')";
 
+    //executando no banco de dados a variavel de inserção
+   /* if (mysqli_query($conn, $endereco)) {
+        echo "Cadastrado com sucesso!";
+    } else {
+        echo "erro ao cadastrar: Erro no Endereco";
+    }*/
+
 
     //Abaixo o código será da parte de ESPECIFICAÇÕES
 
@@ -114,24 +121,78 @@ values('$especificacao','$esp1','$esp2','$esp3','$esp4','$esp5','$esp6')";
 
 
 
+
+
     //executando  no banco de dados a variavel de inserção de ESPECIFICACOES
- if (mysqli_query($conn, $especificacoes)) {
+ /*if (mysqli_query($conn, $especificacoes)) {
         echo "Especificacoes cadastrado com sucesso!";
     } else {
         echo "Erro ao cadastrar: Erro no Especificacoes";
-    }
+    }*/
+
+
+//Pegando os dados de informações gerais
+
+$ocupacao = $_POST['ocupacao'];
+$valorCondominio = $_POST['valorCondominio'];
+$idadeConstrucao = $_POST['idadeConstrucao'];
+$habitese = $_POST['habitese'];
+$construtora = $_POST['construtora'];
+$valorIPTU = $_POST['valorIPTU'];
+$inscIPTU = $_POST['inscIPTU'];
+$descricaoGeralComodos = $_POST['descricaoGeralComodos'];
+$beneficioCondominio = $_POST['beneficioCondominio'];
+$tipoFachada = $_POST['tipoFachada'];
+$tamanhoTerreno = $_POST['tamanhoTerreno'];
+$centroTerreno = $_POST['centroTerreno'];
+$numeroVagasDescobertas = $_POST['numeroVagasDescobertas'];
+$numeroVagasCobertas = $_POST['numeroVagasCobertas'];
+
+//variavel que guarda a linha sql que será inserida na tabela informacoesGerais
+$informacoesGerais = "insert into informacoesgerais
+(ocupacao,valorCondominio,idadeConstrucao,habitese,construtora,valorIPTU,inscIPTU,descricaoGeralComodos,beneficioCondominio,
+tipoFachada,tamanhoTerreno,centroTerreno,numeroVagasDescobertas,numeroVagasCobertas) values('$ocupacao','$valorCondominio','$idadeConstrucao',
+'$habitese','$construtora','$valorIPTU','$inscIPTU','$descricaoGeralComodos','$beneficioCondominio','$tipoFachada','$tamanhoTerreno',
+'$centroTerreno','$numeroVagasDescobertas','$numeroVagasCobertas')";
+
+/*if(mysqli_query($conn, $informacoesGerais)){ 
+    echo "Informações gerais cadastrado com sucesso!";
+}else{ 
+    echo "Error: Erro ao cadastrar Informações gerais";
+}*/
+
+
+//código abaixo da documentação
+
+//pegando dados da documentação
+
+$titulo = $_POST['titulo'];
+$rgi = $_POST['rgi'];
+$planta = $_POST['planta'];
+$cedae = $_POST['cedae'];
+$incendio = $_POST['incendio'];
+
+
+
+//variavel que guarda a linha sql que será inserida na tabela documentacao
+
+$documentacao = "insert into documentacao(titulo,rgi,planta,cedae,incendio)
+values('$titulo','$rgi','$planta','$cedae','$incendio')";
+
+if(mysqli_query($conn, $documentacao)){
+    echo "documentação cadastrado com sucesso";
+}else{
+    echo "Erro: erro ao cadastrar documentação";
+}
 
 
 
 
 
-    //executando no banco de dados a variavel de inserção
-    if (mysqli_query($conn, $endereco)) {
-        echo "Cadastrado com sucesso!";
-    } else {
-        echo "erro ao cadastrar: Erro no Endereco";
-    }
 
+
+
+    
 } else {
     echo 'Connection error!';
 }

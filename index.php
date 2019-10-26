@@ -117,12 +117,12 @@ include('header.php');
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend2">R$</span>
                     </div>
-                    <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Digite o valor" aria-describedby="inputGroupPrepend2" required>
+                    <input name="valorCondominio" type="text" class="form-control" id="validationDefaultUsername" placeholder="Digite o valor" aria-describedby="inputGroupPrepend2" required>
                 </div>
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Idade da Construção</label>
-                <input type="date" class="form-control" id="idade"  name="idadeConstrucao">
+                <input type="date" class="form-control" id="idade" name="idadeConstrucao">
             </div>
             <div class="form-group col-md-2">
                 <label class="dejavu text-light h5">Habite-se</label>
@@ -133,38 +133,36 @@ include('header.php');
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Construtora</label>
-                <input type="text" class="form-control" id="construtora"  name="construtora" placeholder="Nome da construtora">
+                <input type="text" class="form-control" id="construtora" name="construtora" placeholder="Nome da construtora">
             </div>
             <div class="col-md-4 mb-3">
                 <label class="dejavu text-light h5">Valor do IPTU</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" >R$</span>
+                        <span class="input-group-text">R$</span>
                     </div>
-                    <input type="text" class="form-control" name="valorIPTU"  placeholder="Digite o valor" aria-describedby="inputGroupPrepend2" required>
+                    <input type="text" class="form-control" name="valorIPTU" placeholder="Digite o valor" aria-describedby="inputGroupPrepend2" required>
                 </div>
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Inscrição do IPTU</label>
-                <input type="number" class="form-control" id="inscIPTU"  name="inscIPTU">
+                <input type="number" class="form-control" id="inscIPTU" name="inscIPTU">
             </div>
             <div class="form-group col-md-6">
                 <label class="dejavu text-light h5">Descrição geral dos comodos</label>
-                <textarea name="descricaoGeralComodos" class="form-control"  rows="3"
-                            placeholder="Digite a descrição..."></textarea>
+                <textarea name="descricaoGeralComodos" class="form-control" rows="3" placeholder="Digite a descrição..."></textarea>
             </div>
             <div class="form-group col-md-6">
                 <label class="dejavu text-light h5">Beneficios do condominio</label>
-                <textarea name="beneficioCondominio" class="form-control"  rows="3"
-                            placeholder="Digite os beneficios..."></textarea>
+                <textarea name="beneficioCondominio" class="form-control" rows="3" placeholder="Digite os beneficios..."></textarea>
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Tipo de Fachada</label>
-                <input type="text" class="form-control" id="tipoFachada"  name="tipoFachada" placeholder="Digite o tipo de fachada">
+                <input type="text" class="form-control" id="tipoFachada" name="tipoFachada" placeholder="Digite o tipo de fachada">
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Tamanho do terreno</label>
-                <input type="text" class="form-control" id="tamanhoTerreno"  name="tamanhoTerreno" placeholder="Digite o tamanho">
+                <input type="text" class="form-control" id="tamanhoTerreno" name="tamanhoTerreno" placeholder="Digite o tamanho">
             </div>
             <div class="form-group col-md-4">
                 <label class="dejavu text-light h5">Casa no centro do terreno?</label>
@@ -173,13 +171,74 @@ include('header.php');
                     <option value="Não">Não</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label class="dejavu text-light h5">Número de Vagas Descobertas</label>
-                <input type="number" class="form-control" id="numeroVagasDescobertas"  name="numeroVagasDescobertas" placeholder="Digite a quantidade">
+                <input type="number" class="form-control" id="numeroVagasDescobertas" name="numeroVagasDescobertas" placeholder="Digite a quantidade">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Número de Vagas Cobertas</label>
+                <input type="number" class="form-control" id="numeroVagasCobertas" name="numeroVagasCobertas" placeholder="Digite a quantidade">
+            </div>
+            <div class="form-group col-md-6">
+                <label class="dejavu text-light h5">Itens de lazer</label>
+                <textarea name="itensLazer" class="form-control" rows="3" placeholder="Digite a descrição..."></textarea>
+            </div>
+            <!-- final das informações gerais-->
+
+            <!-- Inicio da documentação -->
+
+            <h1 class="text-center dejavu text-light h3 p-3 col-md-12">Documentação</h1>
+            <div class="form-group col-md-4">
+                <label class="dejavu text-light h5">Título</label>
+                <select name="titulo" class="custom-select text-uppercase" id="titulo">
+                    <option value="Compra e venda">Compra e Venda</option>
+                    <option value="Promessa de compra e venda">Promessa de compra e venda</option>
+                    <option value="Sessão de direitos aquisitivos">Sessão de direitos aquisitivos</option>
+                    <option value="Promessa de sessão de direitos aquisitivos">Promessa de sessão de direitos aquisitivos</option>
+                    <option value="Compra, venda e sessão">Compra, venda e sessão</option>
+                    <option value="Dação em pagamento">Dação em pagamento</option>
+                    <option value="Doação">Doação</option>
+                    <option value="Instrumento particular de compra e venda">Instrumento particular de compra e venda</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">RGI</label>
+                <input type="text" class="form-control" id="rgi" name="rgi" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Planta</label>
+                <input type="text" class="form-control" id="planta" name="planta" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">CEDAE</label>
+                <input type="text" class="form-control" id="cedae" name="cedae" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">TX INCENDIO</label>
+                <input type="text" class="form-control" id="incendio" name="incendio" placeholder="">
+            </div>
+            <!-- final da documentacao-->
+            
+
+            <!-- Inicio da documentação -->
+            <h1 class="text-center dejavu text-light h3 p-3 col-md-12">Dados do proprietário</h1>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do proprietário">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Endereço residencial</label>
+                <input type="text" class="form-control" id="residencial" name="residencial" placeholder="Digite o endereço residencial do proprietário">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Endereço comercial</label>
+                <input type="text" class="form-control" id="comercial" name="comercial" placeholder="Digite o endereço comercial do proprietário">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="">
             </div>
 
-
-            
 
         </div>
         <div class="form-group col-md-2 p-2">

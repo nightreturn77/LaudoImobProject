@@ -36,3 +36,37 @@ esp6 varchar(10)
 
 
 );
+
+
+create table informacoesGerais(
+id int(4) auto_increment primary key,
+ocupacao varchar(5) not null, 
+valorCondominio float(10), 
+idadeConstrucao int(3),
+habitese varchar(5) not null,
+construtora varchar(50),
+valorIPTU float(10),
+inscIPTU varchar(50),
+descricaoGeralComodos varchar(400),
+beneficioCondominio varchar(400),
+tipoFachada varchar(50),
+tamanhoTerreno varchar(50),
+centroTerreno varchar(10),
+numeroVagasDescobertas int(10), 
+numeroVagasCobertas int(10)
+
+
+
+
+
+)
+
+
+create table documentacao(
+    id int(4) auto_increment primary key,
+    titulo varchar(20) not null,
+    rgi varchar(50), 
+    planta varchar(50),
+    cedae varchar(50),
+    incendio varchar(50)
+)
