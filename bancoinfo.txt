@@ -70,3 +70,19 @@ create table documentacao(
     cedae varchar(50),
     incendio varchar(50)
 )
+
+
+create table proprietario(
+    id int(4) auto_increment primary key,
+    nome varchar(50),
+    residencial varchar(50),
+    comercial varchar(50),
+    telefone varchar(50),
+    telefoneAlternativo varchar (50),
+    chaves varchar(50),
+    precoSolicitado varchar(50),
+    avaliacao varchar(50),
+    data date,
+    corretor varchar(50)
+
+)

@@ -179,10 +179,37 @@ $incendio = $_POST['incendio'];
 $documentacao = "insert into documentacao(titulo,rgi,planta,cedae,incendio)
 values('$titulo','$rgi','$planta','$cedae','$incendio')";
 
-if(mysqli_query($conn, $documentacao)){
+/*if(mysqli_query($conn, $documentacao)){
     echo "documentação cadastrado com sucesso";
 }else{
     echo "Erro: erro ao cadastrar documentação";
+}*/
+
+
+//código abaixo do proprietário
+
+//pegando dados do proprietário
+$nome = $_POST['nome'];
+$residencial = $_POST['residencial'];
+$comercial = $_POST['comercial'];
+$telefone = $_POST['telefone'];
+$telefoneAlternativo = $_POST['telefoneAlternativo'];
+$chaves = $_POST['chaves'];
+$precoSolicitado = $_POST['precoSolicitado'];
+$avaliacao = $_POST['avaliacao'];
+$data = $_POST['data'];
+$corretor = $_POST['corretor'];
+
+
+//variavel que guarda liha sql que será inserida na tabela proprietario
+$proprietario = "insert into proprietario(nome,residencial,comercial,telefone,telefoneAlternativo,chaves,precoSolicitado,
+avaliacao,data,corretor) values('$nome','$residencial','$comercial','$telefone','$telefoneAlternativo',
+'$chaves','$precoSolicitado','$avaliacao','$data','$corretor')";
+
+if(mysqli_query($conn, $proprietario)){
+    echo "proprietario cadastrado com sucesso";
+}else{
+    echo "Erro: erro ao cadastrar propritário";
 }
 
 

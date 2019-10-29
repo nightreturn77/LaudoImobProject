@@ -218,7 +218,7 @@ include('header.php');
                 <input type="text" class="form-control" id="incendio" name="incendio" placeholder="">
             </div>
             <!-- final da documentacao-->
-            
+
 
             <!-- Inicio da documentação -->
             <h1 class="text-center dejavu text-light h3 p-3 col-md-12">Dados do proprietário</h1>
@@ -237,6 +237,37 @@ include('header.php');
             <div class="form-group col-md-3">
                 <label class="dejavu text-light h5">Telefone</label>
                 <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Telefone alternativo</label>
+                <input type="tel" class="form-control" id="telefoneAlternativo" name="telefoneAlternativo" placeholder="">
+            </div>
+            <div class="form-group col-md-4">
+                <label class="dejavu text-light h5">Chaves com:</label>
+                <select name="chaves" class="custom-select text-uppercase" id="chaves">
+                    <option value="Proprietário">Proprietário</option>
+                    <option value="Escritório">Escritório</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Preço solicitado pelo proprietário</label>
+                <input type="number" class="form-control" id="precoSolicitado" name="precoSolicitado" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Avaliação</label>
+                <input type="number" class="form-control" id="avaliacao" name="avaliacao" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Data</label>
+                <input type="date" class="form-control" id="data" name="data" placeholder="">
+            </div>
+            <div class="form-group col-md-3">
+                <label class="dejavu text-light h5">Corretor</label>
+                <select name="corretor" class="custom-select text-uppercase" id="corretor">
+                    <option value="Marcos">Marcos</option>
+                    <option value="Empresa">Empresa</option>
+
+                </select>
             </div>
 
 
