@@ -2,6 +2,7 @@
 
 include("connection/connection.php");
 
+$criacao =  date('h:i:s, d/m/y');
 
 if (isset($_POST['cadastrar'])) {
     //inicio das variaveis do endereço do formulário   
@@ -16,15 +17,9 @@ if (isset($_POST['cadastrar'])) {
     //fim das vars de endereço
 
     //variavel que guarda a linha sql que será inserida na tabela ENDERECO
-    $endereco = "insert into endereco(cep,logradouro,complemento,bairro,referencia,codigo,condominio,edificio)
-values('$cep','$logradouro','$complemento','$bairro','$referencia','$codigo','$condominio','$edificio')";
+    $endereco = "insert into endereco(cep,logradouro,complemento,bairro,referencia,codigo,condominio,edificio,criacao)
+values('$cep','$logradouro','$complemento','$bairro','$referencia','$codigo','$condominio','$edificio','$criacao')";
 
-    //executando no banco de dados a variavel de inserção
-   /* if (mysqli_query($conn, $endereco)) {
-        echo "Cadastrado com sucesso!";
-    } else {
-        echo "erro ao cadastrar: Erro no Endereco";
-    }*/
 
 
     //Abaixo o código será da parte de ESPECIFICAÇÕES
@@ -116,19 +111,10 @@ values('$cep','$logradouro','$complemento','$bairro','$referencia','$codigo','$c
     
 
     //variavel que guarda a linha sql que será inserida na tabela ESPECIFICACOES
-    $especificacoes = "insert into especificacoes(especificacao,esp1,esp2,esp3,esp4,esp5,esp6)
-values('$especificacao','$esp1','$esp2','$esp3','$esp4','$esp5','$esp6')";
+    $especificacoes = "insert into especificacoes(especificacao,esp1,esp2,esp3,esp4,esp5,esp6,criacao)
+values('$especificacao','$esp1','$esp2','$esp3','$esp4','$esp5','$esp6','$criacao')";
 
 
-
-
-
-    //executando  no banco de dados a variavel de inserção de ESPECIFICACOES
- /*if (mysqli_query($conn, $especificacoes)) {
-        echo "Especificacoes cadastrado com sucesso!";
-    } else {
-        echo "Erro ao cadastrar: Erro no Especificacoes";
-    }*/
 
 
 //Pegando os dados de informações gerais
@@ -151,15 +137,9 @@ $numeroVagasCobertas = $_POST['numeroVagasCobertas'];
 //variavel que guarda a linha sql que será inserida na tabela informacoesGerais
 $informacoesGerais = "insert into informacoesgerais
 (ocupacao,valorCondominio,idadeConstrucao,habitese,construtora,valorIPTU,inscIPTU,descricaoGeralComodos,beneficioCondominio,
-tipoFachada,tamanhoTerreno,centroTerreno,numeroVagasDescobertas,numeroVagasCobertas) values('$ocupacao','$valorCondominio','$idadeConstrucao',
+tipoFachada,tamanhoTerreno,centroTerreno,numeroVagasDescobertas,numeroVagasCobertas,criacao) values('$ocupacao','$valorCondominio','$idadeConstrucao',
 '$habitese','$construtora','$valorIPTU','$inscIPTU','$descricaoGeralComodos','$beneficioCondominio','$tipoFachada','$tamanhoTerreno',
-'$centroTerreno','$numeroVagasDescobertas','$numeroVagasCobertas')";
-
-/*if(mysqli_query($conn, $informacoesGerais)){ 
-    echo "Informações gerais cadastrado com sucesso!";
-}else{ 
-    echo "Error: Erro ao cadastrar Informações gerais";
-}*/
+'$centroTerreno','$numeroVagasDescobertas','$numeroVagasCobertas','$criacao')";
 
 
 //código abaixo da documentação
@@ -176,14 +156,8 @@ $incendio = $_POST['incendio'];
 
 //variavel que guarda a linha sql que será inserida na tabela documentacao
 
-$documentacao = "insert into documentacao(titulo,rgi,planta,cedae,incendio)
-values('$titulo','$rgi','$planta','$cedae','$incendio')";
-
-/*if(mysqli_query($conn, $documentacao)){
-    echo "documentação cadastrado com sucesso";
-}else{
-    echo "Erro: erro ao cadastrar documentação";
-}*/
+$documentacao = "insert into documentacao(titulo,rgi,planta,cedae,incendio,criacao)
+values('$titulo','$rgi','$planta','$cedae','$incendio','$criacao')";
 
 
 //código abaixo do proprietário
@@ -206,13 +180,55 @@ $proprietario = "insert into proprietario(nome,residencial,comercial,telefone,te
 avaliacao,data,corretor) values('$nome','$residencial','$comercial','$telefone','$telefoneAlternativo',
 '$chaves','$precoSolicitado','$avaliacao','$data','$corretor')";
 
-if(mysqli_query($conn, $proprietario)){
-    echo "proprietario cadastrado com sucesso";
-}else{
-    echo "Erro: erro ao cadastrar propritário";
+
+//variaveis para inserção do relacionamento da tabela imvovel
+
+$idEnd = "select idEnd from endereco where criacao = $criacao ";
+$idDoc = "select idDoc from documentacao where criacao = $criacao ";
+$idEsp = "select idEsp from especificacoes where criacao = $criacao ";
+$idInfo = "select idEsp from informacoesGerais where criacao = $criacao ";
+$pegaId = array();
+array_push($pegaId, $idEnd);
+array_push($pegaId, $idDoc);
+array_push($pegaId, $idEsp);
+array_push($pegaId, $idInfo);
+
+$queryId = mysqli_query($conn, $idEnd);
+$queryId2 = mysqli_query($conn, $idDoc);
+$queryId3 = mysqli_query($conn, $idEsp);
+$queryId4 = mysqli_query($conn, $idInfo);
+
+$arrayId = mysqli_fetch_array($queryId);
+$arrayId2 = mysqli_fetch_array($queryId2);
+$arrayId3 = mysqli_fetch_array($queryId3);
+$arrayId4 = mysqli_fetch_array($queryId4);
+
+$idEnd = $arrayId['idEnd'];
+echo $idEnd;
+
+
+//variavel do imovel 
+$imovel = "insert into imovel(idEnd,idDoc,idEsp,idInfo) values(";
+
+$cadastrao = array();
+array_push($cadastrao, $endereco);
+array_push($cadastrao, $especificacoes);
+array_push($cadastrao, $documentacao);
+array_push($cadastrao, $informacoesGerais);
+
+array_push($cadastrao, $proprietario);
+
+for($i = 0;$i<5;$i++){
+    if(mysqli_query($conn, $cadastrao[$i])){ 
+        echo "Cadastro da posição ".$i;
+        var_dump($cadastrao[$i]);
+        echo "<br>";
+    }else{
+        echo "erro no na cadastro da posição".$i;
+        var_dump($cadastrao[$i]);
+        echo "<br>";
+    }
 }
-
-
 
 
 

@@ -1,12 +1,9 @@
-construção do banco de dados
-
-
 
 create database laudodb; 
 use laudodb;
  
 create table endereco(
-id int(4) auto_increment primary key, 
+idEnd int(4) auto_increment primary key, 
 logradouro varchar(50) not null,
 complemento varchar(50), 
 cep varchar(50) not null, 
@@ -14,7 +11,8 @@ referencia varchar(50),
 codigo varchar(50), 
 edificio varchar(50), 
 condominio varchar(50),
-bairro varchar(50)
+bairro varchar(50),
+criacao varchar(50)
 
 
 
@@ -22,14 +20,15 @@ bairro varchar(50)
 );
 
 create table especificacoes(
-id int(4) auto_increment primary key,
+idEsp int(4) auto_increment primary key,
 especificacao varchar(10) not null, 
 esp1 varchar(10),
 esp2 varchar(10),
 esp3 varchar(10),
 esp4 varchar(10),
 esp5 varchar(10),
-esp6 varchar(10)
+esp6 varchar(10),
+criacao varchar(50)
 
 
 
@@ -39,7 +38,7 @@ esp6 varchar(10)
 
 
 create table informacoesGerais(
-id int(4) auto_increment primary key,
+idInfo int(4) auto_increment primary key,
 ocupacao varchar(5) not null, 
 valorCondominio float(10), 
 idadeConstrucao int(3),
@@ -53,24 +52,41 @@ tipoFachada varchar(50),
 tamanhoTerreno varchar(50),
 centroTerreno varchar(10),
 numeroVagasDescobertas int(10), 
-numeroVagasCobertas int(10)
+numeroVagasCobertas int(10),
+criacao varchar(50)
 
 
 
 
 
-)
+);
 
 
 create table documentacao(
-    id int(4) auto_increment primary key,
+    idDoc int(4) auto_increment primary key,
     titulo varchar(20) not null,
     rgi varchar(50), 
     planta varchar(50),
     cedae varchar(50),
-    incendio varchar(50)
-)
+    incendio varchar(50),
+    criacao varchar(50)
+);
 
+
+
+create table imovel( 
+    idImov int(4) auto_increment primary key,
+    idEnd int(4) not null,
+    idEsp int(4) not null, 
+    idDoc int(4) not null, 
+    idInfo int(4) not null, 
+    foreign key(idEnd) references endereco(idEnd),
+    foreign key(idEsp) references especificacoes(idEsp),
+    foreign key(idDoc) references documentacao(idDoc),
+    foreign key(idInfo) references informacoesGerais(idInfo)
+
+
+);
 
 create table proprietario(
     id int(4) auto_increment primary key,
@@ -83,6 +99,9 @@ create table proprietario(
     precoSolicitado varchar(50),
     avaliacao varchar(50),
     data date,
-    corretor varchar(50)
+    corretor varchar(50),
+    idImov int(4) not null, 
+    foreign key(idImov) references imovel(idImov)
+    
 
-)
+);
